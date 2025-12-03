@@ -3,6 +3,7 @@ package com.tomildev.snakegame_compose.ui.gameui
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,6 +34,7 @@ fun GameButtons(
 
     Row(
         modifier = Modifier
+            .fillMaxWidth()
             .padding(vertical = 90.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -40,6 +42,7 @@ fun GameButtons(
             modifier = Modifier,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            Spacer(modifier = Modifier.padding(horizontal = 90.dp))
             DirectionalButton(
                 size = directionButtonSize, direction = Direction.UP, onDirectionChange,
                 shape = RoundedCornerShape(
@@ -89,7 +92,7 @@ fun GameButtons(
             )
         }
 
-        Spacer(modifier = Modifier.padding(horizontal = 70.dp))
+        Spacer(modifier = Modifier.padding(horizontal = 50.dp))
         Column(
             modifier = Modifier
                 .rotate(40f)

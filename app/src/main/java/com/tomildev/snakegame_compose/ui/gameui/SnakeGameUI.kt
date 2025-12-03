@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
@@ -46,7 +47,10 @@ fun GameScreen(
     onDirectionChange: (Direction) -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 10.dp)
+        ,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -56,6 +60,8 @@ fun GameScreen(
 
         Box(
             modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
                 .clip(
                     shape = RoundedCornerShape(
                         topStart = 23.dp,
@@ -65,7 +71,7 @@ fun GameScreen(
                     )
                 )
                 .background(color = GameBoyPurple)
-                .size(height = 330.dp, width = 400.dp),
+                .size(height = 200.dp, width = 400.dp),
 
             //contentAlignment = Alignment.CenterStart
         ) {
@@ -123,7 +129,7 @@ fun GameScreen(
                     // Battery Column
                     Column(
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 65.dp),
+                            .padding(horizontal = 11.dp, vertical = 65.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
 
                         ) {
@@ -135,10 +141,11 @@ fun GameScreen(
                         ) {
                         }
                         Text(
-                            "Battery", modifier = Modifier
+                            "BATTERY", modifier = Modifier
                                 .padding(vertical = 4.dp),
                             color = Color.White,
-                            fontWeight = FontWeight.Normal
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 11.sp
                         )
                     }
                     // Screen Box
@@ -146,7 +153,7 @@ fun GameScreen(
                         modifier = Modifier
                             .size(width = gridWith, height = gridHeight)
                             .background(color = GameBoyGreenScreen)
-                            .border(2.dp, color = Color.Black)
+                            .border(2.dp, color = Color(0xFF748F74))
                     ) {
                         SnakeBody(snakeBody)
                     }
