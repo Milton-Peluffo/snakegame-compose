@@ -60,54 +60,67 @@ fun GameScreen(
                     )
                 )
                 .background(color = Color(0xFF9370f32))
-                .size(height = 370.dp, width = 400.dp)
-            ,
-            contentAlignment = Alignment.CenterStart
+                .size(height = 370.dp, width = 400.dp),
+
+            //contentAlignment = Alignment.CenterStart
         ) {
-
-
-
-            Row(
-                modifier = Modifier,
-                horizontalArrangement = Arrangement.Center,
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 65.dp)
-                    ,
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                Row(
+                    modifier = Modifier,
+                    verticalAlignment = Alignment.CenterVertically
 
                 ) {
+                    // Style lines above the screen
                     Box(
                         modifier = Modifier
-                            .clip(shape = RoundedCornerShape(50))
-                            .size(width = 15.dp, height = 15.dp)
-                            .background(Color.Red)
-                    ) {
-                    }
-                    Text(
-                        "Battery", modifier = Modifier
-                            .padding(vertical = 4.dp)
-                        ,
-                        color = Color.White,
-                        fontWeight = FontWeight.SemiBold
+                            .background(color = Color.Red)
+                            .size(height = 8.dp, width = 300.dp),
                     )
                 }
-                Box(
-                    modifier = Modifier
-                        .size(width = gridWith, height = gridHeight)
-                        .background(Color(0xFF9acc99))
-                        .border(2.dp, color = Color.Black)
+                // Main battery and screen row
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.Center,
                 ) {
-                    SnakeBody(snakeBody)
+                    // Battery Column
+                    Column(
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp, vertical = 65.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+
+                        ) {
+                        Box(
+                            modifier = Modifier
+                                .clip(shape = RoundedCornerShape(50))
+                                .size(width = 15.dp, height = 15.dp)
+                                .background(Color.Red)
+                        ) {
+                        }
+                        Text(
+                            "Battery", modifier = Modifier
+                                .padding(vertical = 4.dp),
+                            color = Color.White,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
+                    // Screen Box
+                    Box(
+                        modifier = Modifier
+                            .size(width = gridWith, height = gridHeight)
+                            .background(Color(0xFF9acc99))
+                            .border(2.dp, color = Color.Black)
+                    ) {
+                        SnakeBody(snakeBody)
+                    }
                 }
             }
         }
-
         GameButtons(onDirectionChange)
     }
 }
-
 
 @Composable
 fun SnakeBody(
