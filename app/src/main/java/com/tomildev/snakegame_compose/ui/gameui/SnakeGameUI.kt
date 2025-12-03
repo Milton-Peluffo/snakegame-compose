@@ -25,7 +25,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,7 +66,7 @@ fun GameScreen(
                     )
                 )
                 .background(color = Color(0xFF9370f32))
-                .size(height = 370.dp, width = 400.dp),
+                .size(height = 330.dp, width = 400.dp),
 
             //contentAlignment = Alignment.CenterStart
         ) {
@@ -73,29 +77,28 @@ fun GameScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 20.dp)
-                    ,
+                        .padding(vertical = 13.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically,
 
-                ) {
+                    ) {
                     // Style lines above the screen
                     Column {
                         Box(
                             modifier = Modifier
                                 .background(color = Color(0xF95E0F29))
-                                .size(height = 4.dp, width = 115.dp),
+                                .size(height = 4.dp, width = 122.dp),
                         )
                         Spacer(modifier = Modifier.padding(vertical = 4.dp))
                         Box(
                             modifier = Modifier
                                 .background(color = Color(0xFF9774f6e))
-                                .size(height = 4.dp, width = 115.dp),
+                                .size(height = 4.dp, width = 122.dp),
                         )
                     }
-                    Text("DO MATRIX WITH STEREO SOUND", modifier = Modifier
-                        .padding(horizontal = 10.dp)
-                        ,
+                    Text(
+                        "DO MATRIX WITH STEREO SOUND", modifier = Modifier
+                            .padding(horizontal = 10.dp),
                         color = Color.White,
                         fontSize = 11.sp
                     )
@@ -136,7 +139,7 @@ fun GameScreen(
                             "Battery", modifier = Modifier
                                 .padding(vertical = 4.dp),
                             color = Color.White,
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.Normal
                         )
                     }
                     // Screen Box
@@ -150,6 +153,37 @@ fun GameScreen(
                     }
                 }
             }
+        }
+        Spacer(modifier = Modifier.padding(vertical = 4.dp))
+        Box(
+            modifier = Modifier
+                .width(400.dp),
+            contentAlignment = Alignment.CenterStart
+        ) {
+            Text(
+                buildAnnotatedString {
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = Color(0xFF9370f32)
+                        )
+                    ) {
+                        append("Developed by ")
+                    }
+
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 27.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            fontStyle = FontStyle.Italic,
+                            color = Color(0xFF9370f32)
+                        )
+                    ) {
+                        append("TomilDev")
+                    }
+                }
+            )
         }
         GameButtons(onDirectionChange)
     }

@@ -1,7 +1,5 @@
 package com.tomildev.snakegame_compose.ui.gameui
 
-import android.R
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -33,8 +29,9 @@ fun GameButtons(
     val buttonSize = 50.dp
     val cornerRadius = 5.dp
 
-    Row(modifier = Modifier
-        .padding(vertical = 90.dp),
+    Row(
+        modifier = Modifier
+            .padding(vertical = 90.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
@@ -66,7 +63,7 @@ fun GameButtons(
                     onClick = {},
                     shape = RoundedCornerShape(1.dp),
                     colors = ButtonColors(
-                        containerColor = Color.Black,
+                        containerColor = Color(0xFF9330f32),
                         contentColor = Color.Black,
                         disabledContainerColor = Color.Black,
                         disabledContentColor = Color.Black
@@ -91,8 +88,9 @@ fun GameButtons(
         }
 
         Spacer(modifier = Modifier.padding(horizontal = 70.dp))
-        Column(modifier = Modifier
-            .rotate(40f)
+        Column(
+            modifier = Modifier
+                .rotate(40f)
         ) {
             OptionButton(size = buttonSize, text = "A")
             OptionButton(size = buttonSize, text = "B")
@@ -103,7 +101,12 @@ fun GameButtons(
 }
 
 @Composable
-fun DirectionalButton(size: Dp, direction: Direction, onDirectionChange: (Direction) -> Unit, shape: RoundedCornerShape) {
+fun DirectionalButton(
+    size: Dp,
+    direction: Direction,
+    onDirectionChange: (Direction) -> Unit,
+    shape: RoundedCornerShape
+) {
 
     Button(
         modifier = Modifier
@@ -111,7 +114,7 @@ fun DirectionalButton(size: Dp, direction: Direction, onDirectionChange: (Direct
         onClick = { onDirectionChange(direction) },
         shape = shape as androidx.compose.ui.graphics.Shape,
         colors = ButtonColors(
-            containerColor = Color.Black,
+            containerColor = Color(0xFF9330f32),
             contentColor = Color.Black,
             disabledContainerColor = Color.Black,
             disabledContentColor = Color.Black
@@ -121,28 +124,30 @@ fun DirectionalButton(size: Dp, direction: Direction, onDirectionChange: (Direct
 }
 
 @Composable
-fun OptionButton(size: Dp, text: String){
+fun OptionButton(size: Dp, text: String) {
 
     Column(
         modifier = Modifier
-            .rotate(285f)
-        ,
+            .rotate(285f),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Button(onClick = {},
+        Button(
+            onClick = {},
             modifier = Modifier.size(size),
             shape = RoundedCornerShape(50),
             colors = ButtonColors(
-                containerColor = Color.Black,
+                containerColor = Color(0xFF97a0234),
                 contentColor = Color.Black,
                 disabledContainerColor = Color.Black,
                 disabledContentColor = Color.Black
             )
         ) { }
         Spacer(modifier = Modifier.padding(vertical = 5.dp))
-        Text(text, modifier = Modifier,
-            color = Color.Red
+        Text(
+            text, modifier = Modifier,
+            color = Color.Black,
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 17.sp
         )
     }
-
 }
