@@ -1,79 +1,105 @@
 package com.tomildev.snakegame_compose.ui.gameui
 
+import android.R
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tomildev.snakegame_compose.gamelogic.Direction
 
 @Composable
-fun DirectionButtons(
+fun GameButtons(
     onDirectionChange: (Direction) -> Unit
 ) {
 
-    val buttonSize = 45.dp
+    val directionButtonSize = 42.dp
+    val buttonSize = 50.dp
     val cornerRadius = 5.dp
 
-    Column(
-        modifier = Modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Row(modifier = Modifier
+        .padding(vertical = 90.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        DirectionalButton(
-            size = buttonSize, direction = Direction.UP, onDirectionChange,
-            shape = RoundedCornerShape(
-                topEnd = cornerRadius,
-                topStart = cornerRadius
-            )
-        )
-
-        Row(
-            modifier = Modifier
+        Column(
+            modifier = Modifier,
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            DirectionalButton(
+                size = directionButtonSize, direction = Direction.UP, onDirectionChange,
+                shape = RoundedCornerShape(
+                    topEnd = cornerRadius,
+                    topStart = cornerRadius
+                )
+            )
+
+            Row(
+                modifier = Modifier
+            ) {
                 DirectionalButton(
-                    size = buttonSize, direction = Direction.LEFT, onDirectionChange,
+                    size = directionButtonSize, direction = Direction.LEFT, onDirectionChange,
                     shape = RoundedCornerShape(
                         topStart = cornerRadius,
                         bottomStart = cornerRadius
                     )
                 )
 
-            Button(
-                modifier = Modifier
-                    .size(buttonSize),
-                onClick = {},
-                shape = RoundedCornerShape(1.dp),
-                colors = ButtonColors(
-                    containerColor = Color.Black,
-                    contentColor = Color.Black,
-                    disabledContainerColor = Color.Black,
-                    disabledContentColor = Color.Black
-                )
-            ) {}
+                Button(
+                    modifier = Modifier
+                        .size(directionButtonSize),
+                    onClick = {},
+                    shape = RoundedCornerShape(1.dp),
+                    colors = ButtonColors(
+                        containerColor = Color.Black,
+                        contentColor = Color.Black,
+                        disabledContainerColor = Color.Black,
+                        disabledContentColor = Color.Black
+                    )
+                ) {}
 
+                DirectionalButton(
+                    size = directionButtonSize, direction = Direction.RIGHT, onDirectionChange,
+                    shape = RoundedCornerShape(
+                        topEnd = cornerRadius,
+                        bottomEnd = cornerRadius
+                    )
+                )
+            }
             DirectionalButton(
-                size = buttonSize, direction = Direction.RIGHT, onDirectionChange,
+                size = directionButtonSize, direction = Direction.DOWN, onDirectionChange,
                 shape = RoundedCornerShape(
-                    topEnd = cornerRadius,
+                    bottomStart = cornerRadius,
                     bottomEnd = cornerRadius
                 )
             )
         }
-        DirectionalButton(
-            size = buttonSize, direction = Direction.DOWN, onDirectionChange,
-            shape = RoundedCornerShape(
-                bottomStart = cornerRadius,
-                bottomEnd = cornerRadius
-            )
-        )
+
+        Spacer(modifier = Modifier.padding(horizontal = 70.dp))
+        Column(modifier = Modifier
+            .rotate(40f)
+        ) {
+            OptionButton(size = buttonSize, text = "A")
+            OptionButton(size = buttonSize, text = "B")
+        }
+
     }
+
 }
 
 @Composable
@@ -94,33 +120,29 @@ fun DirectionalButton(size: Dp, direction: Direction, onDirectionChange: (Direct
     }
 }
 
+@Composable
+fun OptionButton(size: Dp, text: String){
 
-////Buttons and their directions
-//@Composable
-//fun DirectionButtons(
-//    onDirectionChange: (Direction) -> Unit
-//){
-//    Column(
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center,
-//        modifier = Modifier.padding(113.dp)
-//    ) {
-//        Button(onClick = { onDirectionChange(Direction.UP) }) {
-//            Text("UP")
-//        }
-//
-//        Row {
-//            Button(onClick = { onDirectionChange(Direction.LEFT) }) {
-//                Text("LEFT")
-//            }
-//            Spacer(modifier = Modifier.size(16.dp))
-//            Button(onClick = { onDirectionChange(Direction.RIGHT) }) {
-//                Text("RIGHT")
-//            }
-//        }
-//
-//        Button(onClick = { onDirectionChange(Direction.DOWN) }) {
-//            Text("DOWN")
-//        }
-//    }
-//}
+    Column(
+        modifier = Modifier
+            .rotate(285f)
+        ,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Button(onClick = {},
+            modifier = Modifier.size(size),
+            shape = RoundedCornerShape(50),
+            colors = ButtonColors(
+                containerColor = Color.Black,
+                contentColor = Color.Black,
+                disabledContainerColor = Color.Black,
+                disabledContentColor = Color.Black
+            )
+        ) { }
+        Spacer(modifier = Modifier.padding(vertical = 5.dp))
+        Text(text, modifier = Modifier,
+            color = Color.Red
+        )
+    }
+
+}

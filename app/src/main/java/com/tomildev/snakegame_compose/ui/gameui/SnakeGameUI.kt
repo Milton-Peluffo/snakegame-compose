@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,7 +20,7 @@ import com.tomildev.snakegame_compose.gamelogic.Direction
 import com.tomildev.snakegame_compose.gamelogic.GridConfig
 import com.tomildev.snakegame_compose.gamelogic.Position
 
-val cellSize = 20.dp
+val cellSize = 15.dp
 
 // "Screen" of the snake game
 @Composable
@@ -38,16 +39,19 @@ fun GameScreen(
         val gridWith = cellSize * grid.columns
         val gridHeight = cellSize * grid.rows
 
-        Box(
-            modifier = Modifier
-                .size(width = gridWith, height = gridHeight)
-                .background(Color(0xFF9acc99))
-                .border(2.dp, color = Color.Black)
-                .clipToBounds()
-        ){
-            SnakeBody(snakeBody)
+        Box(){
+            Box(
+                modifier = Modifier
+                    .size(width = gridWith, height = gridHeight)
+                    .background(Color(0xFF9acc99))
+                    .border(2.dp, color = Color.Black)
+                    .clipToBounds()
+            ){
+                SnakeBody(snakeBody)
+            }
         }
-        DirectionButtons(onDirectionChange)
+
+        GameButtons(onDirectionChange)
     }
 }
 
@@ -69,24 +73,3 @@ fun SnakeBody(
         )
     }
 }
-
-// SnakeBox, child of snake screen
-//@Composable
-//fun snake(
-//    position: Position
-//){
-//    val cellSize = 20.dp
-//
-//    Box(
-//        modifier = Modifier
-//            .offset(
-//                x = (cellSize * position.x),
-//                y = (cellSize * position.y)
-//            )
-//            .size(cellSize)
-//            .background(Color.Black)
-//            .border(2.dp, Color.Black)
-//
-//    ) {
-//    }
-//}
