@@ -1,4 +1,4 @@
-package com.tomildev.`snakegame-compose`.gameLogic
+package com.tomildev.snakegame_compose.gameLogic
 
 data class Position(
     val x: Int,
@@ -10,6 +10,6 @@ enum class Direction {
 }
 
 data class GridConfig(
-    val columns: Int = 10,
-    val rows: Int = 15
+    val columns: Int = 18,
+    val rows: Int = 20
 )
