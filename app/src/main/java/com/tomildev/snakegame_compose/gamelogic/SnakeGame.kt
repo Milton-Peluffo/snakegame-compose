@@ -8,42 +8,62 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.tomildev.snakegame_compose.ui.gameui.GameScreen
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 
 @Composable
 fun SnakeGame() {
 
     val grid = remember { GridConfig(columns = 18, rows = 18) }
-    var position by remember { mutableStateOf(Position(5, 5)) }
 
-    var direction by remember { mutableStateOf(Direction.RIGHT)}
+    var snakeBody by remember { mutableStateOf(listOf(Position(5, 5))) }
+    var direction by remember { mutableStateOf(Direction.RIGHT) }
+    var bodySize by remember { mutableStateOf(5) }
 
-    LaunchedEffect(direction) {
-        while (true) {
-            delay(200)
+    LaunchedEffect(Unit) {
+        while (isActive) {
+            val currentHead = snakeBody.first()
 
-            position = when (direction) {
+            val newHead = when (direction) {
                 Direction.UP -> Position(
-                    x = position.x,
-                    y = (position.y - 1 + grid.columns) % grid.columns
+                    x = currentHead.x,
+                    y = (currentHead.y - 1 + grid.rows) % grid.rows
                 )
-                    Direction.DOWN -> Position(
-                        x = position.x,
-                        y = (position.y + 1 + grid.columns) % grid.columns
-                    )
-                    Direction.RIGHT -> Position(
-                        x = (position.x + 1 + grid.rows) % grid.rows,
-                        y = position.y
-                    )
-                    Direction.LEFT -> Position(
-                        x = (position.x - 1 + grid.rows) % grid.rows,
-                        y = position.y
-                    )
+                Direction.DOWN -> Position(
+                    x = currentHead.x,
+                    y = (currentHead.y + 1) % grid.rows
+                )
+                Direction.LEFT -> Position(
+                    x = (currentHead.x - 1 + grid.columns) % grid.columns,
+                    y = currentHead.y
+                )
+                Direction.RIGHT -> Position(
+                    x = (currentHead.x + 1) % grid.columns,
+                    y = currentHead.y
+                )
             }
+
+            val newBody = mutableListOf(newHead)
+            newBody.addAll(snakeBody)
+
+            snakeBody = newBody
+
+            delay(200)
         }
     }
+
     GameScreen(
         grid = grid,
-        position = position,
-        onDirectionChange = { direction = it }
+        snakeBody = snakeBody,
+        onDirectionChange = { newDirection ->
+            val isOpposite = when(direction) {
+                Direction.UP -> newDirection == Direction.DOWN
+                Direction.DOWN -> newDirection == Direction.UP
+                Direction.LEFT -> newDirection == Direction.RIGHT
+                Direction.RIGHT -> newDirection == Direction.LEFT
+            }
+            if (!isOpposite) {
+                direction = newDirection
+            }
+        }
     )
 }

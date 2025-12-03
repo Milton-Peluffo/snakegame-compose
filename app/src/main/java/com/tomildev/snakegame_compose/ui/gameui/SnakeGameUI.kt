@@ -24,7 +24,7 @@ val cellSize = 20.dp
 @Composable
 fun GameScreen(
     grid: GridConfig,
-    position: Position,
+    snakeBody: List<Position>,
     onDirectionChange: (Direction) -> Unit
 ){
 
@@ -44,29 +44,48 @@ fun GameScreen(
                 .border(2.dp, color = Color.Black)
                 .clipToBounds()
         ){
-            snake(position)
+            SnakeBody(snakeBody)
         }
         DirectionButtons(onDirectionChange)
     }
 }
 
-// SnakeBox, child of snake screen
+
 @Composable
-fun snake(
-    position: Position
+fun SnakeBody(
+    bodyBoxes: List<Position>
 ){
-    val cellSize = 20.dp
-
-    Box(
-        modifier = Modifier
-            .offset(
-                x = (cellSize * position.x),
-                y = (cellSize * position.y)
-            )
-            .size(cellSize)
-            .background(Color.Black)
-            .border(2.dp, Color.Black)
-
-    ) {
+    bodyBoxes.forEach { position ->
+        Box(
+            modifier = Modifier
+                .offset(
+                    x = (cellSize * position.x),
+                    y = (cellSize * position.y)
+                )
+                .size(cellSize)
+                .background(Color.Black)
+                .border(2.dp, Color.Black)
+        )
     }
 }
+
+// SnakeBox, child of snake screen
+//@Composable
+//fun snake(
+//    position: Position
+//){
+//    val cellSize = 20.dp
+//
+//    Box(
+//        modifier = Modifier
+//            .offset(
+//                x = (cellSize * position.x),
+//                y = (cellSize * position.y)
+//            )
+//            .size(cellSize)
+//            .background(Color.Black)
+//            .border(2.dp, Color.Black)
+//
+//    ) {
+//    }
+//}
