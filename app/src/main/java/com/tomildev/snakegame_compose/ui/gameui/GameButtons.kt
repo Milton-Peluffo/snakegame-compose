@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tomildev.snakegame_compose.gamelogic.Direction
+import com.tomildev.snakegame_compose.ui.theme.GameBoyPurple
+import com.tomildev.snakegame_compose.ui.theme.GameBoyRed
 
 @Composable
 fun GameButtons(
@@ -114,7 +116,7 @@ fun DirectionalButton(
         onClick = { onDirectionChange(direction) },
         shape = shape as androidx.compose.ui.graphics.Shape,
         colors = ButtonColors(
-            containerColor = Color(0xFF9330f32),
+            containerColor = GameBoyPurple,
             contentColor = Color.Black,
             disabledContainerColor = Color.Black,
             disabledContentColor = Color.Black
@@ -136,7 +138,7 @@ fun OptionButton(size: Dp, text: String) {
             modifier = Modifier.size(size),
             shape = RoundedCornerShape(50),
             colors = ButtonColors(
-                containerColor = Color(0xFF97a0234),
+                containerColor = GameBoyRed,
                 contentColor = Color.Black,
                 disabledContainerColor = Color.Black,
                 disabledContentColor = Color.Black
