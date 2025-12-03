@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -27,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.tomildev.snakegame_compose.gamelogic.Direction
 import com.tomildev.snakegame_compose.gamelogic.GridConfig
 import com.tomildev.snakegame_compose.gamelogic.Position
@@ -64,21 +66,52 @@ fun GameScreen(
 
             //contentAlignment = Alignment.CenterStart
         ) {
+
             Column(
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
-                    modifier = Modifier,
-                    verticalAlignment = Alignment.CenterVertically
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 20.dp)
+                    ,
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
 
                 ) {
                     // Style lines above the screen
-                    Box(
-                        modifier = Modifier
-                            .background(color = Color.Red)
-                            .size(height = 8.dp, width = 300.dp),
+                    Column {
+                        Box(
+                            modifier = Modifier
+                                .background(color = Color(0xF95E0F29))
+                                .size(height = 4.dp, width = 115.dp),
+                        )
+                        Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                        Box(
+                            modifier = Modifier
+                                .background(color = Color(0xFF9774f6e))
+                                .size(height = 4.dp, width = 115.dp),
+                        )
+                    }
+                    Text("DO MATRIX WITH STEREO SOUND", modifier = Modifier
+                        .padding(horizontal = 10.dp)
+                        ,
+                        color = Color.White,
+                        fontSize = 11.sp
                     )
+                    Column {
+                        Box(
+                            modifier = Modifier
+                                .background(color = Color(0xFF9550e39))
+                                .size(height = 4.dp, width = 60.dp),
+                        )
+                        Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                        Box(
+                            modifier = Modifier
+                                .background(color = Color(0xFF9774f6e))
+                                .size(height = 4.dp, width = 60.dp),
+                        )
+                    }
                 }
                 // Main battery and screen row
                 Row(
@@ -96,7 +129,7 @@ fun GameScreen(
                             modifier = Modifier
                                 .clip(shape = RoundedCornerShape(50))
                                 .size(width = 15.dp, height = 15.dp)
-                                .background(Color.Red)
+                                .background(Color(0xFF9840435))
                         ) {
                         }
                         Text(
