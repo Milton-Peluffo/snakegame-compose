@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.tomildev.`snakegame-compose`.gameLogic.SnakeGame
+import com.tomildev.snakegame_compose.gamelogic.SnakeGame
 import com.tomildev.snakegame_compose.ui.theme.SnakegamecomposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,8 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SnakegamecomposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SnakeGame(modifier = Modifier.padding(innerPadding)
-                    )
+                    SnakeGame()
                 }
             }
         }

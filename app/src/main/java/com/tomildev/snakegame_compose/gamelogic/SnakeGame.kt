@@ -1,4 +1,4 @@
-package com.tomildev.`snakegame-compose`.gameLogic
+package com.tomildev.snakegame_compose.gamelogic
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,15 +6,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import com.tomildev.snakegame_compose.gameLogic.Direction
-import com.tomildev.snakegame_compose.gameLogic.GridConfig
-import com.tomildev.snakegame_compose.gameLogic.Position
-import com.tomildev.snakegame_compose.ui.GameScreen
+import com.tomildev.snakegame_compose.ui.gameui.GameScreen
 import kotlinx.coroutines.delay
 
 @Composable
-fun SnakeGame(modifier: Modifier = Modifier) {
+fun SnakeGame() {
 
     val grid = remember { GridConfig(columns = 18, rows = 18) }
     var position by remember { mutableStateOf(Position(5, 5)) }

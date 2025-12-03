@@ -1,4 +1,4 @@
-package com.tomildev.snakegame_compose.gameLogic
+package com.tomildev.snakegame_compose.gamelogic
 
 data class Position(
     val x: Int,
