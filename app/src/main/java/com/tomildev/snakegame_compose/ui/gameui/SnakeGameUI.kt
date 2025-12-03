@@ -64,7 +64,7 @@ fun SnakeBody(
                 )
                 .size(cellSize)
                 .background(Color.Black)
-                .border(2.dp, Color.Black)
+                .border(1.dp, Color(0xFF9acc99))
         )
     }
 }

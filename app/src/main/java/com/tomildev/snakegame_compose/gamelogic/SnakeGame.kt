@@ -44,7 +44,7 @@ fun SnakeGame() {
 
             val newBody = mutableListOf(newHead)
             newBody.addAll(snakeBody)
-
+            
             snakeBody = newBody
 
             delay(200)
