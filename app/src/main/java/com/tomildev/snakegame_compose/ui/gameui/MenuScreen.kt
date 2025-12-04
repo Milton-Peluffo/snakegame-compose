@@ -54,7 +54,6 @@ fun MenuScreen(onStartClicked: () -> Unit){
             contentDescription = "Snake Splash Art",
         )
         Spacer(modifier = Modifier.height(15.dp))
-
         Text(
             text = "PRESS START TO PLAY",
             fontSize = 11.sp,

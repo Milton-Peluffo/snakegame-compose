@@ -10,4 +10,5 @@ val GameBoyLightPurple = Color(0xFF9774f6e)
 
 val GameBoyBatteryRed = Color(0xF9A81E45)
 val GameBoyWhite = Color(0xF9f3efd2)
+val GameBoyDarkWhite = Color(0xFFC2B9A4)
 val GameBoyBlack = Color(0xF92D2C28)

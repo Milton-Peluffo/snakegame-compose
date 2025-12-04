@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
@@ -30,7 +29,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.*
+import androidx.compose.material3.Icon
+import androidx.compose.ui.Alignment
 import com.tomildev.snakegame_compose.gamelogic.Direction
 import com.tomildev.snakegame_compose.gamelogic.GameState
 import com.tomildev.snakegame_compose.gamelogic.GridConfig
@@ -40,6 +40,10 @@ import com.tomildev.snakegame_compose.ui.theme.GameBoyGreenScreen
 import com.tomildev.snakegame_compose.ui.theme.GameBoyLightPurple
 import com.tomildev.snakegame_compose.ui.theme.GameBoyPurple
 import com.tomildev.snakegame_compose.ui.theme.GameBoyRed
+import com.tomildev.snakegame_compose.ui.assets.Headphones
+import com.tomildev.snakegame_compose.ui.theme.GameBoyDarkWhite
+import com.tomildev.snakegame_compose.ui.theme.GameBoyWhite
+
 
 val cellSize = 13.dp
 
@@ -56,8 +60,7 @@ fun GameScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 10.dp)
-        ,
+            .padding(horizontal = 10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -67,8 +70,8 @@ fun GameScreen(
 
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(1f)
+//                .fillMaxWidth()
+//                .aspectRatio(1f)
                 .clip(
                     shape = RoundedCornerShape(
                         topStart = 23.dp,
@@ -78,7 +81,7 @@ fun GameScreen(
                     )
                 )
                 .background(color = GameBoyPurple)
-                .size(height = 200.dp, width = 400.dp),
+                .size(height = 330.dp, width = 400.dp),
 
             //contentAlignment = Alignment.CenterStart
         ) {
@@ -167,6 +170,7 @@ fun GameScreen(
                             GameState.Menu -> {
                                 MenuScreen(onsTartGame)
                             }
+
                             GameState.Playing -> {
                                 SnakeBody(snakeBody)
                             }
@@ -210,16 +214,24 @@ fun GameScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(110.dp)
-                .background(Color.Blue),
-            contentAlignment = Alignment.BottomEnd
-        ){
+                .height(140.dp)
+                //.background(color = Color.Blue)
+            ,
+        ) {
+            ConsolePhones(
+                modifier = Modifier
+                    .offset(x = 45.dp, y = 70.dp),
+            )
+
             ConsoleSpeaker(
-                modifier = Modifier,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .offset(x = (-15).dp, y = 17.dp),
             )
         }
     }
 }
+
 
 @Composable
 fun SnakeBody(
@@ -240,19 +252,68 @@ fun SnakeBody(
 }
 
 @Composable
-fun ConsoleSpeaker(modifier: Modifier = Modifier){
-    val speakerSize = 100.dp
+fun ConsoleSpeaker(modifier: Modifier) {
     Row(
-        modifier = Modifier
-          .rotate(330f)
-        ,
+        modifier = modifier
+            .rotate(330f),
         horizontalArrangement = Arrangement.End
     ) {
-        Box(
-            modifier = Modifier
-                .size(width = 8.dp, height = 120.dp)
-                .background(color = GameBoyPurple)
-                .clip(shape = RoundedCornerShape(50)))
+        repeat(5) {
+            Spacer(modifier = Modifier.padding(horizontal = 8.dp, vertical = 20.dp))
+            Box(
+                modifier = Modifier
+                    .size(width = 8.dp, height = 90.dp)
+                    .clip(shape = RoundedCornerShape(50))
+                    .background(color = GameBoyPurple)
+            )
+        }
     }
+}
 
+
+@Composable
+fun ConsolePhones(modifier: Modifier) {
+
+    Column(modifier = modifier) {
+        Box(
+            modifier = modifier
+                .clip(shape = RoundedCornerShape(50))
+                .size(height = 25.dp, width = 90.dp)
+                .background(color = GameBoyDarkWhite)
+        ) {
+            Row(
+                modifier = Modifier
+                    .align(Alignment.Center)
+            ) {
+                Icon(
+                    imageVector = Headphones, contentDescription = "Headphones",
+                    modifier = Modifier
+                        .size(20.dp),
+                    tint = GameBoyWhite
+                )
+                Spacer(modifier = Modifier.padding(horizontal = 1.dp))
+                Text(
+                    text = "PHONES",
+                    fontSize = 15.sp,
+                    color = GameBoyWhite,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+
+        }
+        Row(
+            modifier = modifier,
+        ) {
+            repeat(3){
+                Spacer(modifier = Modifier.padding(horizontal = 3.dp))
+                Box(
+                    modifier = Modifier
+                        .offset(x = 35.dp, y = (-4).dp)
+                        .size(height = 100.dp, width = 8.dp)
+                        .background(color = GameBoyDarkWhite)
+                )
+            }
+        }
+
+    }
 }
