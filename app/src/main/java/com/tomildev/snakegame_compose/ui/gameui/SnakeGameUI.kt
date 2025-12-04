@@ -30,7 +30,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.animation.*
 import com.tomildev.snakegame_compose.gamelogic.Direction
+import com.tomildev.snakegame_compose.gamelogic.GameState
 import com.tomildev.snakegame_compose.gamelogic.GridConfig
 import com.tomildev.snakegame_compose.gamelogic.Position
 import com.tomildev.snakegame_compose.ui.theme.GameBoyBatteryRed
@@ -44,6 +46,9 @@ val cellSize = 13.dp
 // "Screen" of the snake game
 @Composable
 fun GameScreen(
+    gameState: GameState,
+    onsTartGame: () -> Unit,
+
     grid: GridConfig,
     snakeBody: List<Position>,
     onDirectionChange: (Direction) -> Unit
@@ -157,7 +162,15 @@ fun GameScreen(
                             .background(color = GameBoyGreenScreen)
                             .border(2.dp, color = Color(0xFF748F74))
                     ) {
-                        SnakeBody(snakeBody)
+                        // Switch screen state logic
+                        when (gameState) {
+                            GameState.Menu -> {
+                                MenuScreen(onsTartGame)
+                            }
+                            GameState.Playing -> {
+                                SnakeBody(snakeBody)
+                            }
+                        }
                     }
                 }
             }
@@ -229,9 +242,6 @@ fun SnakeBody(
 @Composable
 fun ConsoleSpeaker(modifier: Modifier = Modifier){
     val speakerSize = 100.dp
-
-
-
     Row(
         modifier = Modifier
           .rotate(330f)

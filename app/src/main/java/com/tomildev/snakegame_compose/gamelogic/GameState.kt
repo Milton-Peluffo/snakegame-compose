@@ -1,5 +1,11 @@
 package com.tomildev.snakegame_compose.gamelogic
 
+
+sealed class  GameState {
+    object Menu : GameState()
+    object Playing : GameState()
+}
+
 data class Position(
     val x: Int,
     val y: Int
