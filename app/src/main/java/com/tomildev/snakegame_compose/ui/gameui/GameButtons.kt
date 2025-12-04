@@ -1,9 +1,11 @@
 package com.tomildev.snakegame_compose.ui.gameui
 
+import androidx.annotation.Size
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -97,10 +99,44 @@ fun GameButtons(
             modifier = Modifier
                 .rotate(66f)
         ) {
-            OptionButton(size = buttonSize, text = "A")
-            OptionButton(size = buttonSize, text = "B")
+            ActionButton(size = buttonSize, text = "A")
+            ActionButton(size = buttonSize, text = "B")
         }
+    }
+    Row(
+        modifier = Modifier
+            .rotate(-20f)
+            .offset(y = (-23).dp, x = 10.dp)
+    ) {
+        OptionButton(modifier = Modifier, text = "SELECT")
+        Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+        OptionButton(modifier = Modifier
+            .offset(y = 25.dp)
+            , text = "START")
+    }
+}
 
+@Composable
+fun OptionButton(modifier: Modifier, text: String) {
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .size(height = 13.dp, width = 54.dp),
+
+            ) {
+
+        }
+        Text(
+            text, modifier = Modifier,
+            color = Color.Black,
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 13.sp
+        )
     }
 
 }
@@ -129,7 +165,7 @@ fun DirectionalButton(
 }
 
 @Composable
-fun OptionButton(size: Dp, text: String) {
+fun ActionButton(size: Dp, text: String) {
 
     Column(
         modifier = Modifier

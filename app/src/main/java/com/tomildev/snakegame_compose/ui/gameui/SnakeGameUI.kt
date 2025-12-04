@@ -205,7 +205,17 @@ fun GameScreen(
                             color = Color(0xFF9370f32)
                         )
                     ) {
-                        append("TomilDev")
+                        append("TOMILDEV")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            fontStyle = FontStyle.Normal,
+                            color = Color(0xFF9370f32)
+                        )
+                    ) {
+                        append(" TM")
                     }
                 }
             )
