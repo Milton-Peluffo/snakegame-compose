@@ -35,7 +35,7 @@ fun GameButtons(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 90.dp),
+            .padding(vertical = 40.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
@@ -95,7 +95,7 @@ fun GameButtons(
         Spacer(modifier = Modifier.padding(horizontal = 50.dp))
         Column(
             modifier = Modifier
-                .rotate(40f)
+                .rotate(66f)
         ) {
             OptionButton(size = buttonSize, text = "A")
             OptionButton(size = buttonSize, text = "B")
@@ -133,7 +133,7 @@ fun OptionButton(size: Dp, text: String) {
 
     Column(
         modifier = Modifier
-            .rotate(285f),
+            .rotate(265f),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Button(

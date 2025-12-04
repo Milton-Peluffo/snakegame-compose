@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -92,13 +94,13 @@ fun GameScreen(
                         Box(
                             modifier = Modifier
                                 .background(color = GameBoyRed)
-                                .size(height = 4.dp, width = 122.dp),
+                                .size(height = 4.dp, width = 100.dp),
                         )
                         Spacer(modifier = Modifier.padding(vertical = 4.dp))
                         Box(
                             modifier = Modifier
                                 .background(color = GameBoyLightPurple)
-                                .size(height = 4.dp, width = 122.dp),
+                                .size(height = 4.dp, width = 100.dp),
                         )
                     }
                     Text(
@@ -192,6 +194,17 @@ fun GameScreen(
             )
         }
         GameButtons(onDirectionChange)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(110.dp)
+                .background(Color.Blue),
+            contentAlignment = Alignment.BottomEnd
+        ){
+            ConsoleSpeaker(
+                modifier = Modifier,
+            )
+        }
     }
 }
 
@@ -211,4 +224,25 @@ fun SnakeBody(
                 .border(1.dp, Color(0xFF9acc99))
         )
     }
+}
+
+@Composable
+fun ConsoleSpeaker(modifier: Modifier = Modifier){
+    val speakerSize = 100.dp
+
+
+
+    Row(
+        modifier = Modifier
+          .rotate(330f)
+        ,
+        horizontalArrangement = Arrangement.End
+    ) {
+        Box(
+            modifier = Modifier
+                .size(width = 8.dp, height = 120.dp)
+                .background(color = GameBoyPurple)
+                .clip(shape = RoundedCornerShape(50)))
+    }
+
 }
