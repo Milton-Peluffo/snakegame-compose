@@ -91,19 +91,19 @@ Y en el mismo archivo, se establecen las posibles direcciones en las que la serp
 
 ### Explicación breve del funcionamiento del movimiento y la posicion de la serpiente en la cuadricula: 
 
-#### Direction.UP<br>
+- #### Direction.UP<br>
 Resta 1 a la coordenada Y para mover la cabeza hacia arriba.<br>
 Si newY es menor que 0, significa que se salio del limite superior del grid, por eso retorna null.
 
-#### Direction.DOWN<br>
+- #### Direction.DOWN<br>
 Suma 1 a Y para bajar una casilla.<br>
 Si newY es mayor o igual al numero total de filas (grid.rows), esta fuera del tablero.
 
-#### Direction.LEFT<br>
+- #### Direction.LEFT<br>
 Resta 1 a X para mover la cabeza hacia la izquierda.<br>
 Si newX es menor que 0, se salio por el borde izquierdo.
 
-#### Direction.RIGHT<br>
+- #### Direction.RIGHT<br>
 Suma 1 a X para mover la cabeza hacia la derecha.<br>
 Si newX es mayor o igual al total de columnas (grid.columns), significa que se fue del limite derecho.
 
@@ -159,7 +159,7 @@ Y luego se devuelve al menu principal del juego.
 <img width="427" height="142" alt="image" src="https://github.com/user-attachments/assets/f237e284-0b20-4799-977c-ec0293ced86b" />
 
 ### 📦 Snake Game Compose es un proyecto de autoestudio creado pa practicar Jetpack Compose, manejo de estado y logica. El codigo puede revisarse libremente.
-Este proyecto está sugeto a posible cambios futuros. 
+Este proyecto está sugeto a posibles cambios futuros. 
 
 ### Gracias por pasarte por aquí! 😎
 
