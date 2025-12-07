@@ -67,6 +67,7 @@ fun SnakeGame() {
 
                 // if snake hits the boundary or itself, return to menu screen
                 if (isAtBoundary) {
+                    delay(1800)
                     gameState = GameState.Menu
                 } else {
                     newHead?.let { head ->
@@ -96,7 +97,7 @@ fun SnakeGame() {
         val StartGame = {
             snakeBody = listOf(Position(5, 5))
             direction = Direction.RIGHT
-            bodySize = 15
+            bodySize = 3
             gameState = GameState.Playing
         }
 
