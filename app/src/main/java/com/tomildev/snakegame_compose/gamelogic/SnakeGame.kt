@@ -87,7 +87,7 @@ fun SnakeGame() {
                     foodPosition = generateRandomPosition()
                 }
 
-                    delay(218)
+                    delay(225)
                 }
 
 
