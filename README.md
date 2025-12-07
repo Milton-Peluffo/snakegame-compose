@@ -2,20 +2,25 @@
 Snake Game Compose es una aplicación Android que implementa el clásico juego Snake con una estética retro inspirada en la consola Nintendo GameBoy. La aplicación está construida completamente con Jetpack Compose para el renderizado de UI y gestión de estado.
 
 ## Estructura del proyecto ##
-com.tomildev.snakegame_compose/  
-├── MainActivity.kt  
-├── gamelogic/  
-│   ├── SnakeGame.kt  
-│   └── GameState.kt  
-├── ui.gameui/  
-│   ├── SnakeGameUI.kt  
-│   ├── GameButtons.kt  
-│   └── MenuScreen.kt  
-├── ui.theme/  
-│   ├── Theme.kt  
-│   └── Color.kt  
-└── ui.assets/  
-    └── VectorIcons.kt
+📂 com.tomildev.snakegame_compose<br>
+├── 📄 MainActivity.kt — inicia la app y carga la UI<br>
+│    <br>
+├── gamelogic/<br>
+│ ├── 📄 GameState.kt — estados, posicion, direccion y config del grid<br>
+│ └── 📄 SnakeGame.kt — logica del snake: movimiento, colisiones, comida<br>
+│<br>
+├── ui.gameui/<br>
+│ ├── 📄 SnakeGameUI.kt — dibuja la consola, el juego (grid, snake, comida)<br>
+│ ├── 📄 GameButtons.kt — botones A/B, start, select y direcciones<br>
+│ └── 📄 MenuScreen.kt — menu inicial con splash y “press start”<br>
+│<br>
+├── ui.theme/<br>
+│ ├── 📄 Theme.kt — tema general de la app<br>
+│ └── 📄 Color.kt — paleta de colores personalizada estilo retro<br>
+│<br>
+└── ui.assets/<br>
+  └── 📄 VectorIcons.kt — icono vectorial usado en la UI 🎧
+
 
 # UI del juego
 
