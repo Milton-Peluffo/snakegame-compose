@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.times
 import com.tomildev.snakegame_compose.gamelogic.Direction
 import com.tomildev.snakegame_compose.gamelogic.GameState
 import com.tomildev.snakegame_compose.gamelogic.GridConfig
@@ -59,6 +60,7 @@ fun GameScreen(
     onsTartGame: () -> Unit,
     grid: GridConfig,
     snakeBody: List<Position>,
+    foodPosition: Position,
     isAtBoundary: Boolean,
     onDirectionChange: (Direction) -> Unit
 ) {
@@ -177,7 +179,22 @@ fun GameScreen(
                             }
 
                             GameState.Playing -> {
-                                SnakeBody(snakeBody, isAtBoundary)
+                                Box(modifier = Modifier.fillMaxSize()) {
+                                    // Draw food on screen
+                                    if (foodPosition.x >= 0 && foodPosition.y >= 0) {
+                                        Box(
+                                            modifier = Modifier
+                                                .offset(
+                                                    x = foodPosition.x * cellSize,
+                                                    y = foodPosition.y * cellSize
+                                                )
+                                                .size(cellSize)
+                                                .background(Color.Red)
+                                                .border(1.dp, Color(0xFF9acc99))
+                                        )
+                                    }
+                                    SnakeBody(snakeBody, isAtBoundary)
+                                }
                             }
                         }
                     }

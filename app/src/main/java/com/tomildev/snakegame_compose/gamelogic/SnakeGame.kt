@@ -21,6 +21,18 @@ fun SnakeGame() {
     var bodySize by remember { mutableStateOf(5) }
 
     var isAtBoundary by remember { mutableStateOf(false) }
+    var foodPosition by remember { mutableStateOf(Position(0, 0)) }
+
+    fun generateRandomPosition(): Position {
+        val x = (0 until grid.columns).random()
+        val y = (0 until grid.rows).random()
+        return Position(x, y)
+    }
+
+    LaunchedEffect(Unit) {
+        // Initialize food position when the game starts
+        foodPosition = generateRandomPosition()
+    }
 
     LaunchedEffect(gameState) {
 
@@ -76,6 +88,7 @@ fun SnakeGame() {
         onsTartGame = { StartGame() },
         grid = grid,
         snakeBody = snakeBody,
+        foodPosition = foodPosition,
         isAtBoundary = isAtBoundary,
         onDirectionChange = { newDirection ->
             val isOpposite = when(direction) {
