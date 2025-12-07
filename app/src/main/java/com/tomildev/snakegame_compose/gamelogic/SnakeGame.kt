@@ -18,7 +18,7 @@ fun SnakeGame() {
     var gameState by remember { mutableStateOf<GameState>(GameState.Menu) }
     var snakeBody by remember { mutableStateOf(listOf(Position(5, 5))) }
     var direction by remember { mutableStateOf(Direction.RIGHT) }
-    var bodySize by remember { mutableStateOf(5) }
+    var bodySize by remember { mutableStateOf(3) }
 
     var isAtBoundary by remember { mutableStateOf(false) }
     var foodPosition by remember { mutableStateOf(Position(0, 0)) }
@@ -45,14 +45,17 @@ fun SnakeGame() {
                         val newY = currentHead.y - 1
                         if (newY >= 0) Position(currentHead.x, newY) else null
                     }
+
                     Direction.DOWN -> {
                         val newY = currentHead.y + 1
                         if (newY < grid.rows) Position(currentHead.x, newY) else null
                     }
+
                     Direction.LEFT -> {
                         val newX = currentHead.x - 1
                         if (newX >= 0) Position(newX, currentHead.y) else null
                     }
+
                     Direction.RIGHT -> {
                         val newX = currentHead.x + 1
                         if (newX < grid.columns) Position(newX, currentHead.y) else null
@@ -71,35 +74,45 @@ fun SnakeGame() {
                     snakeBody = newBody
                 }
 
-                delay(200)
+                // if snake eats food, the snake increase the size and generate new food position
+                if (snakeBody.contains(foodPosition)) {
+                    bodySize++
+                    foodPosition = generateRandomPosition()
+                }
+
+
+
+                    delay(200)
+                }
+
+
             }
         }
-    }
 
-    val StartGame = {
-        snakeBody = listOf(Position(5, 5))
-        direction = Direction.RIGHT
-        bodySize = 5
-        gameState = GameState.Playing
-    }
-
-    GameScreen(
-        gameState = gameState,
-        onsTartGame = { StartGame() },
-        grid = grid,
-        snakeBody = snakeBody,
-        foodPosition = foodPosition,
-        isAtBoundary = isAtBoundary,
-        onDirectionChange = { newDirection ->
-            val isOpposite = when(direction) {
-                Direction.UP -> newDirection == Direction.DOWN
-                Direction.DOWN -> newDirection == Direction.UP
-                Direction.LEFT -> newDirection == Direction.RIGHT
-                Direction.RIGHT -> newDirection == Direction.LEFT
-            }
-            if (!isOpposite) {
-                direction = newDirection
-            }
+        val StartGame = {
+            snakeBody = listOf(Position(5, 5))
+            direction = Direction.RIGHT
+            bodySize = 3
+            gameState = GameState.Playing
         }
-    )
-}
+
+        GameScreen(
+            gameState = gameState,
+            onsTartGame = { StartGame() },
+            grid = grid,
+            snakeBody = snakeBody,
+            foodPosition = foodPosition,
+            isAtBoundary = isAtBoundary,
+            onDirectionChange = { newDirection ->
+                val isOpposite = when (direction) {
+                    Direction.UP -> newDirection == Direction.DOWN
+                    Direction.DOWN -> newDirection == Direction.UP
+                    Direction.LEFT -> newDirection == Direction.RIGHT
+                    Direction.RIGHT -> newDirection == Direction.LEFT
+                }
+                if (!isOpposite) {
+                    direction = newDirection
+                }
+            }
+        )
+    }
