@@ -27,31 +27,33 @@ fun SnakeGame() {
                 val currentHead = snakeBody.first()
 
                 val newHead = when (direction) {
-                    Direction.UP -> Position(
-                        x = currentHead.x,
-                        y = (currentHead.y - 1 + grid.rows) % grid.rows
-                    )
-                    Direction.DOWN -> Position(
-                        x = currentHead.x,
-                        y = (currentHead.y + 1) % grid.rows
-                    )
-                    Direction.LEFT -> Position(
-                        x = (currentHead.x - 1 + grid.columns) % grid.columns,
-                        y = currentHead.y
-                    )
-                    Direction.RIGHT -> Position(
-                        x = (currentHead.x + 1) % grid.columns,
-                        y = currentHead.y
-                    )
+                    Direction.UP -> {
+                        val newY = currentHead.y - 1
+                        if (newY >= 0) Position(currentHead.x, newY) else null
+                    }
+                    Direction.DOWN -> {
+                        val newY = currentHead.y + 1
+                        if (newY < grid.rows) Position(currentHead.x, newY) else null
+                    }
+                    Direction.LEFT -> {
+                        val newX = currentHead.x - 1
+                        if (newX >= 0) Position(newX, currentHead.y) else null
+                    }
+                    Direction.RIGHT -> {
+                        val newX = currentHead.x + 1
+                        if (newX < grid.columns) Position(newX, currentHead.y) else null
+                    }
                 }
 
-                val newBody = mutableListOf(newHead)
-                newBody.addAll(snakeBody)
+                newHead?.let { head ->
+                    val newBody = mutableListOf(head)
+                    newBody.addAll(snakeBody)
 
-                while (newBody.size > bodySize) {
-                    newBody.removeLast()
+                    while (newBody.size > bodySize) {
+                        newBody.removeLast()
+                    }
+                    snakeBody = newBody
                 }
-                snakeBody = newBody
 
                 delay(200)
             }
