@@ -174,6 +174,7 @@ fun GameScreen(
                     ) {
                         // Switch screen state logic
                         when (gameState) {
+
                             GameState.Menu -> {
                                 MenuScreen(onsTartGame)
                             }

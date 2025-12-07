@@ -62,11 +62,14 @@ fun SnakeGame() {
                     }
                 }
 
-                // if snake hits the boundary or itself, the snake stop and blink
+                // if snake hits the boundary or itself, return to menu
                 isAtBoundary = newHead == null || snakeBody.contains(newHead)
 
-                newHead?.let { head ->
-                    if (!isAtBoundary) {
+                // if snake hits the boundary or itself, return to menu screen
+                if (isAtBoundary) {
+                    gameState = GameState.Menu
+                } else {
+                    newHead?.let { head ->
                         val newBody = mutableListOf(head)
                         newBody.addAll(snakeBody)
 
