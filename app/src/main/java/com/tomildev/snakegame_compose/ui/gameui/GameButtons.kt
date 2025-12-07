@@ -27,7 +27,8 @@ import com.tomildev.snakegame_compose.ui.theme.GameBoyRed
 
 @Composable
 fun GameButtons(
-    onDirectionChange: (Direction) -> Unit
+    onDirectionChange: (Direction) -> Unit,
+    onStartClick: () -> Unit = {}
 ) {
 
     val directionButtonSize = 42.dp
@@ -108,29 +109,32 @@ fun GameButtons(
             .rotate(-20f)
             .offset(y = (-23).dp, x = 10.dp)
     ) {
-        OptionButton(modifier = Modifier, text = "SELECT")
+        OptionButton(modifier = Modifier, text = "SELECT", onClick = {})
         Spacer(modifier = Modifier.padding(horizontal = 8.dp))
-        OptionButton(modifier = Modifier
-            .offset(y = 25.dp)
-            , text = "START")
+        OptionButton(
+            modifier = Modifier.offset(y = 25.dp),
+            text = "START",
+            onClick = onStartClick
+        )
     }
 }
 
 @Composable
-fun OptionButton(modifier: Modifier, text: String) {
+fun OptionButton(
+    modifier: Modifier,
+    text: String,
+    onClick: () -> Unit = {}
+) {
 
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Button(
-            onClick = {},
+            onClick = onClick,
             modifier = Modifier
                 .size(height = 13.dp, width = 54.dp),
-
-            ) {
-
-        }
+        ) {}
         Text(
             text, modifier = Modifier,
             color = Color.Black,

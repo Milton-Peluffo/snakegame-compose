@@ -43,7 +43,6 @@ fun MenuScreen(onStartClicked: () -> Unit){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .clickable { onStartClicked() }
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center

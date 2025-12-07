@@ -220,7 +220,10 @@ fun GameScreen(
                 }
             )
         }
-        GameButtons(onDirectionChange)
+        GameButtons(
+            onDirectionChange = onDirectionChange,
+            onStartClick = { if (gameState == GameState.Menu) onsTartGame() }
+        )
         Box(
             modifier = Modifier
                 .fillMaxWidth()
