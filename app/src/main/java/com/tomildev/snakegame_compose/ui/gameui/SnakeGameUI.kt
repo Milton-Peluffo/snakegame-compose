@@ -1,5 +1,10 @@
 package com.tomildev.snakegame_compose.ui.gameui
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -7,7 +12,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,6 +34,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import com.tomildev.snakegame_compose.gamelogic.Direction
 import com.tomildev.snakegame_compose.gamelogic.GameState
@@ -52,9 +57,9 @@ val cellSize = 13.dp
 fun GameScreen(
     gameState: GameState,
     onsTartGame: () -> Unit,
-
     grid: GridConfig,
     snakeBody: List<Position>,
+    isAtBoundary: Boolean,
     onDirectionChange: (Direction) -> Unit
 ) {
     Column(
@@ -172,7 +177,7 @@ fun GameScreen(
                             }
 
                             GameState.Playing -> {
-                                SnakeBody(snakeBody)
+                                SnakeBody(snakeBody, isAtBoundary)
                             }
                         }
                     }
@@ -248,8 +253,22 @@ fun GameScreen(
 
 @Composable
 fun SnakeBody(
-    bodyBoxes: List<Position>
+    bodyBoxes: List<Position>,
+    isAtBoundary: Boolean
 ) {
+    val infiniteTransition = rememberInfiniteTransition(label = "SnakeBlinkTransition")
+    val bodyAlpha by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = 0.3f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 150),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "SnakeBlinkAlpha"
+    )
+
+    val alpha = if (isAtBoundary) bodyAlpha else 1f
+
     bodyBoxes.forEach { position ->
         Box(
             modifier = Modifier
@@ -258,7 +277,7 @@ fun SnakeBody(
                     y = (cellSize * position.y)
                 )
                 .size(cellSize)
-                .background(Color.Black)
+                .background(Color.Black.copy(alpha = alpha))
                 .border(1.dp, Color(0xFF9acc99))
         )
     }

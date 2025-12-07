@@ -20,6 +20,8 @@ fun SnakeGame() {
     var direction by remember { mutableStateOf(Direction.RIGHT) }
     var bodySize by remember { mutableStateOf(5) }
 
+    var isAtBoundary by remember { mutableStateOf(false) }
+
     LaunchedEffect(gameState) {
 
         if (gameState == GameState.Playing) {
@@ -44,6 +46,8 @@ fun SnakeGame() {
                         if (newX < grid.columns) Position(newX, currentHead.y) else null
                     }
                 }
+
+                isAtBoundary = newHead == null
 
                 newHead?.let { head ->
                     val newBody = mutableListOf(head)
@@ -72,6 +76,7 @@ fun SnakeGame() {
         onsTartGame = { StartGame() },
         grid = grid,
         snakeBody = snakeBody,
+        isAtBoundary = isAtBoundary,
         onDirectionChange = { newDirection ->
             val isOpposite = when(direction) {
                 Direction.UP -> newDirection == Direction.DOWN
