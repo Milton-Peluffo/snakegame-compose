@@ -1,7 +1,10 @@
-## Descripción General ##
+# Descripción General ##
 Snake Game Compose es una aplicación Android que implementa el clásico juego Snake con una estética retro inspirada en la consola Nintendo GameBoy. La aplicación está construida completamente con Jetpack Compose para el renderizado de UI y gestión de estado.
 
-## Estructura del proyecto ##
+## 🕹️ El apk del juego puede encontrarla en el apartado de releases del repositorio listo para jugar en su versión estable v1.0
+🔗 [Snake Compose Release](https://github.com/Milton-Peluffo/snakegame-compose/releases/tag/v1.0)
+
+# Estructura del proyecto ##
 📂 com.tomildev.snakegame_compose<br>
 ├── 📄 MainActivity.kt — inicia la app y carga la UI<br>
 │    <br>
@@ -24,7 +27,7 @@ Snake Game Compose es una aplicación Android que implementa el clásico juego S
 
 # UI del juego
 
-### Toda la UI de la aplicacion está basada en un dieseño retro, simulando la antigua consola de nintendo GameBoy con sus respectivos botones y su pantalla de juego, todo esto diseñado con colores pasteles suaves para darle una agradable vista al usuario <br>
+### Toda la UI de la aplicacion está basada en un diseño retro, simulando la antigua consola de nintendo GameBoy con sus respectivos botones y su pantalla de juego, todo esto diseñado con colores pasteles suaves para darle una agradable vista al usuario <br>
 
 <table>
   <tr>
@@ -154,3 +157,9 @@ Y luego se devuelve al menu principal del juego.
 4. La logica esta centralizada en la funcion lambda StartGame().
 
 <img width="427" height="142" alt="image" src="https://github.com/user-attachments/assets/f237e284-0b20-4799-977c-ec0293ced86b" />
+
+### 📦 Snake Game Compose es un proyecto de autoestudio creado pa practicar Jetpack Compose, manejo de estado y logica. El codigo puede revisarse libremente.
+Este proyecto está sugeto a posible cambios futuros. 
+
+### Gracias por pasarte por aquí! 😎
+
