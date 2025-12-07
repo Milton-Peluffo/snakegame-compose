@@ -17,6 +17,24 @@ com.tomildev.snakegame_compose/
 └── ui.assets/  
     └── VectorIcons.kt
 
+# UI del juego
+
+## Toda la UI de la aplicacion está basada en un dieseño retro, simulando la antigua consola de nintendo GameBoy con sus respectivos botones y su pantalla de juego, todo esto diseñado con colores pasteles suaves para darle una agradable vista al usuario <br>
+
+### Vista con menu de incio<br>
+Esta vista contiene una imagen que representa el menu de inicio del juego, con la clasica imagen splash del juego de la serpiente y un texto parpadeate "PRESS START TO PLAY"
+
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/27210810-c5a3-4613-9cdc-fa66db05d691" />
+
+### Vista con el juego<br>
+En esta vista solo cambiaria la pantalla del juego, donde luego de presionar el boton "PLAY", ya se mostraría la serpiente y el jugador ya podria empezar a moverla por la pantalla y jugar.
+
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/af9b7a1d-2ac2-4d89-ad79-f8f2f8c8b0c0" />
+
+### Vista con los limites de cada uno de los layouts de la pantalla delineados<br>
+
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/52aff9e7-b4bc-43b6-8d61-98e3ac264880" />
+
 # Funcionamiento del juego #
 
 ## Movimiento continuo por corrutinas
@@ -24,6 +42,41 @@ com.tomildev.snakegame_compose/
 El juego actualiza el movimiento de la serpiente cada 225 ms, utilizando LaunchedEffect y un while para mantener el bucle de juego activo.
 
 <img width="394" height="79" alt="image" src="https://github.com/user-attachments/assets/2d4b8535-8fd6-475e-8b71-d371ecca059f" />
+
+## Movimiento de la serpiente:
+
+A continuacion, esta es la explicacion por partes del movimiento de la serpiente en la cuadricula.
+
+Mediante data classes almacenadas en el archivo GameState.kt,
+Se establecen las posibles posiciones para el posicionamiento de las partes de la serpiente en la cuadricula, en este caso X,Y
+
+<img width="236" height="126" alt="image" src="https://github.com/user-attachments/assets/9770a3a8-991e-4732-9e2d-15647eaf940a" />
+
+Y en el mismo archivo, se establecen las posibles direcciones en las que la serpiente puede moverse. [Arriba, abajo, izquierda, derecha]
+
+<img width="252" height="98" alt="image" src="https://github.com/user-attachments/assets/f19304e3-2a51-4a66-bb2d-cf435eb0600f" />
+
+## Codigo del movimiento de la serpiente en la cuadricula
+
+<img width="680" height="479" alt="image" src="https://github.com/user-attachments/assets/a2b85302-cb14-408f-8a2e-ecb6b8bd7ab7" />
+
+### Explicación breve del funcionamiento del movimiento y la posicion de la serpiente en la cuadricula: 
+
+#### Direction.UP<br>
+Resta 1 a la coordenada Y para mover la cabeza hacia arriba.<br>
+Si newY es menor que 0, significa que se salio del limite superior del grid, por eso retorna null.
+
+#### Direction.DOWN<br>
+Suma 1 a Y para bajar una casilla.<br>
+Si newY es mayor o igual al numero total de filas (grid.rows), esta fuera del tablero.
+
+#### Direction.LEFT<br>
+Resta 1 a X para mover la cabeza hacia la izquierda.<br>
+Si newX es menor que 0, se salio por el borde izquierdo.
+
+#### Direction.RIGHT<br>
+Suma 1 a X para mover la cabeza hacia la derecha.<br>
+Si newX es mayor o igual al total de columnas (grid.columns), significa que se fue del limite derecho.
 
 ## Alimento aleatorio
 La comida aparece en posiciones aleatorias dentro de una cuadricula de 18x18.
