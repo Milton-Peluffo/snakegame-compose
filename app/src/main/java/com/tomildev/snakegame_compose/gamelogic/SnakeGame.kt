@@ -62,16 +62,19 @@ fun SnakeGame() {
                     }
                 }
 
-                isAtBoundary = newHead == null
+                // if snake hits the boundary or itself, the snake stop and blink
+                isAtBoundary = newHead == null || snakeBody.contains(newHead)
 
                 newHead?.let { head ->
-                    val newBody = mutableListOf(head)
-                    newBody.addAll(snakeBody)
+                    if (!isAtBoundary) {
+                        val newBody = mutableListOf(head)
+                        newBody.addAll(snakeBody)
 
-                    while (newBody.size > bodySize) {
-                        newBody.removeLast()
+                        while (newBody.size > bodySize) {
+                            newBody.removeLast()
+                        }
+                        snakeBody = newBody
                     }
-                    snakeBody = newBody
                 }
 
                 // if snake eats food, the snake increase the size and generate new food position
@@ -79,8 +82,6 @@ fun SnakeGame() {
                     bodySize++
                     foodPosition = generateRandomPosition()
                 }
-
-
 
                     delay(200)
                 }
@@ -92,7 +93,7 @@ fun SnakeGame() {
         val StartGame = {
             snakeBody = listOf(Position(5, 5))
             direction = Direction.RIGHT
-            bodySize = 3
+            bodySize = 15
             gameState = GameState.Playing
         }
 

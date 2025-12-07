@@ -189,7 +189,7 @@ fun GameScreen(
                                                     y = foodPosition.y * cellSize
                                                 )
                                                 .size(cellSize)
-                                                .background(Color.Red)
+                                                .background(Color.Black)
                                                 .border(1.dp, Color(0xFF9acc99))
                                         )
                                     }
