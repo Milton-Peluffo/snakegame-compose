@@ -19,21 +19,42 @@ com.tomildev.snakegame_compose/
 
 # UI del juego
 
-## Toda la UI de la aplicacion está basada en un dieseño retro, simulando la antigua consola de nintendo GameBoy con sus respectivos botones y su pantalla de juego, todo esto diseñado con colores pasteles suaves para darle una agradable vista al usuario <br>
+### Toda la UI de la aplicacion está basada en un dieseño retro, simulando la antigua consola de nintendo GameBoy con sus respectivos botones y su pantalla de juego, todo esto diseñado con colores pasteles suaves para darle una agradable vista al usuario <br>
 
-### Vista con menu de incio<br>
-Esta vista contiene una imagen que representa el menu de inicio del juego, con la clasica imagen splash del juego de la serpiente y un texto parpadeate "PRESS START TO PLAY"
+<table>
+  <tr>
+    <td>
+        <img src="https://github.com/user-attachments/assets/5baaeb79-c00a-47eb-a7c8-2b5e775f17ce" width="350" />
+    </td>
+    <td>
+      <h2>Vista con menu de inicio</h2>
+      Esta vista contiene la pantalla inicial del juego, con una imagen estilo retro simulando el splash del juego
+      y un texto parpadeante en la parte inferior de la imagen con el texto: "PRESS START TO PLAY".
+    </td>
+  </tr>
 
-<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/27210810-c5a3-4613-9cdc-fa66db05d691" />
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/af9b7a1d-2ac2-4d89-ad79-f8f2f8c8b0c0" width="350"/>
+    </td>
+    <td>
+      <h2>Vista con el juego</h2>
+      Luego de presionar "START", aparece la serpiente y el jugador puede moverla
+      por la pantalla para jugar.
+    </td>
+  </tr>
 
-### Vista con el juego<br>
-En esta vista solo cambiaria la pantalla del juego, donde luego de presionar el boton "PLAY", ya se mostraría la serpiente y el jugador ya podria empezar a moverla por la pantalla y jugar.
-
-<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/af9b7a1d-2ac2-4d89-ad79-f8f2f8c8b0c0" />
-
-### Vista con los limites de cada uno de los layouts de la pantalla delineados<br>
-
-<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/52aff9e7-b4bc-43b6-8d61-98e3ac264880" />
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/52aff9e7-b4bc-43b6-8d61-98e3ac264880" width="350"/>
+    </td>
+    <td>
+      <h2>Limites de los layouts</h2>
+      Vista donde se muestran los limites de cada layout de la pantalla 
+      delineados para depuracion.
+    </td>
+  </tr>
+</table>
 
 # Funcionamiento del juego #
 
