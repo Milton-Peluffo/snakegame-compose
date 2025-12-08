@@ -159,7 +159,7 @@ Y luego se devuelve al menu principal del juego.
 <img width="427" height="142" alt="image" src="https://github.com/user-attachments/assets/f237e284-0b20-4799-977c-ec0293ced86b" />
 
 ### 📦 Snake Game Compose es un proyecto de autoestudio creado pa practicar Jetpack Compose, manejo de estado y logica. El codigo puede revisarse libremente.
-Este proyecto está sugeto a posibles cambios futuros. 
+Este proyecto está sujeto a posibles cambios futuros. 
 
 ### Gracias por pasarte por aquí! 😎
 
